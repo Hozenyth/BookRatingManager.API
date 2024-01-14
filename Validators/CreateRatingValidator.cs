@@ -7,9 +7,9 @@ namespace BookRatingManager.Api.Validators
     {
         public CreateRatingValidator()
         {
-            RuleFor(c => c.Score)
+            RuleFor(c => c.Rate)
                 .InclusiveBetween(1,5)
-                .WithMessage("The Score must be between 1 and 5.");
+                .WithMessage("The Rate must be between 1 and 5.");
 
            
             RuleFor(c => c.EndDate)

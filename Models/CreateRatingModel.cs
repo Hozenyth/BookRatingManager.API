@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public int UserId { get; set; }
         public int BookId { get; set; }
-        public int Score { get; set; }
+        public int Rate { get; set; }
         public string Description { get; set; }
         public DateTime Created { get; set; }
         public DateTime? EndDate { get; set; }
