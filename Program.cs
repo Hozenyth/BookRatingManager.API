@@ -1,7 +1,9 @@
+using BookRating.Infrastructure.Persistence;
 using BookRatingManager.Api.Models;
 using BookRatingManager.Api.Validators;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +21,9 @@ builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddScoped<IValidator<CreateBookModel>, CreateBookValidator>();
 builder.Services.AddScoped<IValidator<CreateRatingModel>, CreateRatingValidator>();
 
+
 var connectionString = builder.Configuration.GetConnectionString("BookRatingCs");
-//builder.Services.AddDbContext<BookRatingDbContext>(p => p.UseSqlServer(connectionString));
+builder.Services.AddDbContext<BookRatingDbContext>(p => p.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
