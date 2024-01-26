@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookRatingManager.Api.Controllers
 {
     [Route("api/BookRatingManager")]
-    public class BookRatingManagerController : ControllerBase
+    public class BookController : ControllerBase
     {
 
-        public BookRatingManagerController() { }
+        public BookController() { }
 
         [HttpGet]
         public IActionResult GetBooks(string query)
@@ -42,17 +42,6 @@ namespace BookRatingManager.Api.Controllers
                 return BadRequest(error);
             return Ok();
         }
-
-        [HttpPost("CreateRating", Name = "CreateRating")]
-        public IActionResult CreateRating([FromBody] CreateRatingModel createRating, [FromServices] IValidator<CreateRatingModel> validator)
-        {
-
-            var result = validator.Validate(createRating);
-            var error = result.Errors.Select(e => e.ErrorMessage);
-
-            if (!result.IsValid)
-                return BadRequest(error);
-            return Ok();
-        }
+                
     }
 }
